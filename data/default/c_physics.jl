@@ -20,21 +20,29 @@ const phi0_flux = h_planck/(2*e_electron)
 const u_nuclear = e*hbar_planck/(2*m_proton)
 const alpha_fine_structure = 7.2973525698e-3
 const r_rydberg = 10973731.568539/Meter
+const e_hartree = m_electron*e_electron^4*k_coulomb^2/hbar_planck^2
 
 
 const ElectronVolt = DerivedUnit("eV", e_electron*Volt)
+const E_electron = DerivedUnit("e", e_electron)
+const M_electron = DerivedUnit("mₑ", m_electron)
 const Angstrom = DerivedUnit("Å", 1e-10*Meter)
 const Ångström = Angstrom # Alias for Swedish-speaking people
 const Fermi = DerivedUnit("F", Femto*Meter)
 const Phi0_flux = DerivedUnit("Φ₀", phi0_flux)
 const H_planck = DerivedUnit("ℎ", h_planck)
 const Hbar_planck = DerivedUnit("ℏ", hbar_planck)
-const K_boltzmann = DerivedUnit("kᵇ", k_boltzmann) # I can't find a unicode subscript b
+const K_boltzmann = DerivedUnit("kᴮ", k_boltzmann) # I can't find a unicode subscript B
+const K_coulomb = DerivedUnit("kₑ", k_coulomb)
 const U0_magnetic = DerivedUnit("μ₀", u0_magnetic)
 const E0_electric = DerivedUnit("ε₀", e0_electric)
 const Z0_freespace = DerivedUnit("Z₀", z0_freespace)
 const A_bohr = DerivedUnit("a₀", a_bohr)
 const N_avogadro = DerivedUnit("Nₐ", n_avogadro)
+const C_light = DerivedUnit("c", c_light)
+const G_gravitation = DerivedUnit("G", g_gravitation)
+const R_rydberg = DerivedUnit("R∞", r_rydberg)
+const E_hartree = DerivedUnit("Eₕ", e_hartree)
 
 
 export k_boltzmann, n_avogadro, h_planck, hbar_planck, g_gravitation, g_earth_gravity, c_light
@@ -42,5 +50,5 @@ export e_electron, m_electron, m_proton, a_bohr, u0_magnetic, e0_electric, z0_fr
 export k_coulomb, mu_bohr, conductance_quantum, k_josephson, phi0_flux, u_nuclear, alpha_fine_structure
 export r_rydberg
 
-export ElectronVolt, Phi0_flux, Angstrom, Ångström, Fermi, Phi0_flux, H_planck, Hbar_planck, K_boltzmann
-export U0_magnetic, E0_electric, Z0_freespace, A_bohr, N_avogadro
+export ElectronVolt, E_electron, M_electron, Phi0_flux, Angstrom, Ångström, Fermi, Phi0_flux, H_planck, Hbar_planck, K_boltzmann, K_coulomb
+export U0_magnetic, E0_electric, Z0_freespace, A_bohr, N_avogadro, C_light, G_gravitation, R_rydberg, E_hartree
