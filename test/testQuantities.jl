@@ -48,7 +48,7 @@ DerivedUnit("slug", 14.5939029*KiloGram)
 # long unit chain
 A = BaseUnit("A")
 B = DerivedUnit("B", 2*A)
-C = DerivedUnit("C", 2*A*B)
+C = DerivedUnit("Cc", 2*A*B) # "C" interferes with Coulomb
 D = DerivedUnit("D", 2*A*B*C)
 asbase(D)
 as(A*B*C, D)

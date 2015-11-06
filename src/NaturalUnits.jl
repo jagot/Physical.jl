@@ -110,11 +110,9 @@ macro define_natural_unit_system(name, basic_unit, units)
         $units_sym = $units_v
         $matrix_sym,$inv_matrix_sym = unit_system_matrix($units_v)
 
-        if !isdefined(symbol("$($name_str)UnitsQuantity"))
-            type $quantity_sym{T<:Quantities.QValue}
-                value::T # Value in natural unit system
-                unit::Quantities.Quantity{T} # Conversion factor, in SI units
-            end
+        type $quantity_sym{T<:Quantities.QValue}
+            value::T # Value in natural unit system
+            unit::Quantities.Quantity{T} # Conversion factor, in SI units
         end
 
         import Base.*
