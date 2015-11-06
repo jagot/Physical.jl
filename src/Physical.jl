@@ -17,4 +17,6 @@ function load_unit_system(loaddir::AbstractString)
 end
 include(normpath(dirname(Base.source_path()), "../data/what_to_load.jl"))
 
+include("NaturalUnits.jl")
+
 end # end module
