@@ -9,7 +9,7 @@ import Base: promote_rule, convert, show, sqrt, +, *, -, /, ^, .*, ./, .^, ==, g
 typealias QValue  Union{Number, AbstractArray, Uncertain} # things that go inside a Quantity
 # Quantity is where most of the action happens
 # Quantity combines a value with some units
-# Quantities can be reduced to base units via asbase, which uses the UnitSytem Dict
+# Quantities can be reduced to base units via asbase, which uses the UnitSystem Dict
 # all other conversions are call on asbase
 type Quantity{T<:QValue}
     value::T
@@ -116,12 +116,14 @@ end
 .^{T}(x::Quantity{T}, y::Integer) = Quantity_(x.value.^convert(AbstractFloat,y), x.unit.^convert(AbstractFloat,y))
 .^{T}(x::Quantity{T}, y::Number) = Quantity_(x.value.^convert(AbstractFloat,y), x.unit.^convert(AbstractFloat,y))
 for f in (:(==), :<, :>, :>=, :<=, :.!=, :(.==), :.<, :.>, :.>=, :.<=, :.!=, :isapprox)
-    @eval begin function ($f)(x::Quantity, y::Quantity)
-                    a = asbase(x)
-                    b = asbase(y)
-                    assert(a.unit == b.unit)
-                    ($f)(a.value,b.value)
-                end end
+    @eval begin
+        function ($f)(x::Quantity, y::Quantity)
+            a = asbase(x)
+            b = asbase(y)
+            assert(a.unit == b.unit)
+            ($f)(a.value,b.value)
+        end
+    end
 end
 sqrt(x::Quantity) = Quantity_(sqrt(x.value), x.unit^.5)
 getindex(x::Quantity, y...) = Quantity_(getindex(x.value, y...),x.unit)

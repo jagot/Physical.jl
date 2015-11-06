@@ -106,6 +106,10 @@ function show(io::IO,x::Unit)
         if exponent == 1
             show(io, unitsymbol)
             print(io, " ")
+        elseif exponent == 0.5
+            print(io, "√(")
+            show(io, unitsymbol)
+            print(io, ")")
         elseif exponent != 0
             show(io, unitsymbol)
             print(io, superscript(prettyround(exponent)))
