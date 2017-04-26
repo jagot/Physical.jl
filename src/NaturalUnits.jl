@@ -98,13 +98,13 @@ function unit_system_matrix(units)
 end
 
 macro define_natural_unit_system(name, basic_unit, units)
-    quantity_sym = symbol("$(name)UnitsQuantity")
-    units_sym = symbol("$(name)Units")
-    matrix_sym = symbol("$(name)Matrix")
-    inv_matrix_sym = symbol("$(name)InvMatrix")
+    quantity_sym = Symbol("$(name)UnitsQuantity")
+    units_sym = Symbol("$(name)Units")
+    matrix_sym = Symbol("$(name)Matrix")
+    inv_matrix_sym = Symbol("$(name)InvMatrix")
     units_v = eval(units)
     name_str = string(name)
-    conv_fun_sym = symbol("conv_fac_$(name)")
+    conv_fun_sym = Symbol("conv_fac_$(name)")
 
     @eval begin
         $units_sym = $units_v
@@ -183,7 +183,7 @@ macro define_natural_unit_system(name, basic_unit, units)
         end
 
         export $quantity_sym, $units_sym, *, √, as
-        NaturalUnitSystems[symbol($name_str)] = $quantity_sym
+        NaturalUnitSystems[Symbol($name_str)] = $quantity_sym
     end
 end
 
